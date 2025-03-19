@@ -1,6 +1,10 @@
+#include <functional>
 #include <iostream>
+#include <string>
+
 using namespace std;
 
+function<void()> EnterNumber(int &varLink, string label);
 void inputQ();
 void inputP();
 void calculateRemainder();
@@ -13,14 +17,14 @@ int main() {
 
   do {
     // Вывод меню
-    std::cout << "Menu:\n";
-    std::cout << "1. Enter integer Q\n";
-    std::cout << "2. Enter natural number P (less than Q)\n";
-    std::cout << "3. Calculate remainder of Q divided by P\n";
-    std::cout << "4. Calculate integer part of Q divided by P\n";
-    std::cout << "0. Exit\n";
-    std::cout << "Choose the menu item: ";
-    std::cin >> choice;
+    cout << "Menu:\n";
+    cout << "1. Enter integer Q\n";
+    cout << "2. Enter natural number P (less than Q)\n";
+    cout << "3. Calculate remainder of Q divided by P\n";
+    cout << "4. Calculate integer part of Q divided by P\n";
+    cout << "0. Exit\n";
+    cout << "Choose the menu item: ";
+    cin >> choice;
 
     switch (choice) {
     case 1:
@@ -36,10 +40,10 @@ int main() {
       calculateQuotient();
       break;
     case 0:
-      std::cout << "Exiting the program.\n";
+      cout << "Exiting the program.\n";
       break;
     default:
-      std::cout << "Invalid choice. Please try again.\n";
+      cout << "Invalid choice. Please try again.\n";
     }
   } while (choice != 0);
 
@@ -57,11 +61,26 @@ bool isValidNumber(const string &input) {
 }
 
 // Функция для ввода числа
-//
-void inputQ() {
-  cout << "Enter integer Q: ";
-  cin >> Q;
+function<void()> EnterNumber(int &varLink, string label) {
+  return [&varLink, label]() {
+    string raw_input;
+    cout << label;
+    getline(cin, raw_input);
+
+    // Цикл для повторного запроса числа, пока не будет введено корректное
+    // значение
+    while (!isValidNumber(raw_input)) {
+      cout << "Invalid input. " << label;
+      getline(cin, raw_input);
+    }
+
+    varLink = stoi(raw_input); // Преобразуем строку в целое число
+  };
 }
+
+// Функция для ввода числа
+//
+void inputQ() { EnterNumber(Q, "Enter integer Q: "); }
 
 void inputP() {}
 
