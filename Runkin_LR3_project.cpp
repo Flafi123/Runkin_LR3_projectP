@@ -92,6 +92,13 @@ void inputP() {
   } while (P <= 0 || P >= Q);
 }
 
-void calculateRemainder() {}
+void calculateRemainder() {
+  if (P > 0) {
+    int remainder = Q % P;
+    cout << "Remainder of Q divided by P: " << remainder << endl;
+  } else {
+    cout << "Error: P < 0.\n";
+  }
+}
 
 void calculateQuotient() {}
