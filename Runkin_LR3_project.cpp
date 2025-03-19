@@ -11,6 +11,7 @@ void calculateRemainder();
 void calculateQuotient();
 
 int Q; // Переменная для хранения целого числа Q
+int P;
 
 int main() {
   int choice;
@@ -82,7 +83,14 @@ function<void()> EnterNumber(int &varLink, string label) {
 //
 void inputQ() { EnterNumber(Q, "Enter integer Q: "); }
 
-void inputP() {}
+void inputP() {
+  do {
+    EnterNumber(P, "Enter natural number P (less than Q): ");
+    if (P <= 0 || P >= Q) {
+      cout << "Error: P should be natural number and less than Q.\n";
+    }
+  } while (P <= 0 || P >= Q);
+}
 
 void calculateRemainder() {}
 
