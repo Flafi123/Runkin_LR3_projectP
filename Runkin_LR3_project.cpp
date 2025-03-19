@@ -57,7 +57,7 @@ bool isValidNumber(const string &input) {
 }
 
 // Функция для ввода числа
-
+//
 void inputQ() {
   cout << "Enter integer Q: ";
   cin >> Q;
