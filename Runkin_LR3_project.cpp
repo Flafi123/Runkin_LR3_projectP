@@ -101,4 +101,11 @@ void calculateRemainder() {
   }
 }
 
-void calculateQuotient() {}
+void calculateQuotient() {
+  if (P > 0) {
+    int quotient = Q / P;
+    cout << "Integer part of Q divided by P: " << quotient << endl;
+  } else {
+    cout << "Error: P should be greater than 0.\n";
+  }
+}
