@@ -3,22 +3,24 @@ using namespace std;
 
 void inputQ();
 void inputP();
-void calculate1();
-void calculate2();
+void calculateRemainder();
+void calculateQuotient();
+
+int Q; // Переменная для хранения целого числа Q
 
 int main() {
   int choice;
 
   do {
     // Вывод меню
-    cout << "Menu:\n";
-    cout << "1. Enter integer Q\n";
-    cout << "2. Enter natural number P (less than Q)\n";
-    cout << "3. Calculate remainder of Q divided by P\n";
-    cout << "4. Calculate integer part of Q divided by P\n";
-    cout << "0. Exit\n";
-    cout << "Choose the menu item: ";
-    cin >> choice;
+    std::cout << "Menu:\n";
+    std::cout << "1. Enter integer Q\n";
+    std::cout << "2. Enter natural number P (less than Q)\n";
+    std::cout << "3. Calculate remainder of Q divided by P\n";
+    std::cout << "4. Calculate integer part of Q divided by P\n";
+    std::cout << "0. Exit\n";
+    std::cout << "Choose the menu item: ";
+    std::cin >> choice;
 
     switch (choice) {
     case 1:
@@ -28,16 +30,16 @@ int main() {
       inputP();
       break;
     case 3:
-      calculate1();
+      calculateRemainder();
       break;
     case 4:
-      calculate2();
+      calculateQuotient();
       break;
     case 0:
-      cout << "Exiting the program.\n";
+      std::cout << "Exiting the program.\n";
       break;
     default:
-      cout << "Invalid choice. Please try again.\n";
+      std::cout << "Invalid choice. Please try again.\n";
     }
   } while (choice != 0);
 
@@ -56,10 +58,13 @@ bool isValidNumber(const string &input) {
 
 // Функция для ввода числа
 
-void inputQ() {}
+void inputQ() {
+  cout << "Enter integer Q: ";
+  cin >> Q;
+}
 
 void inputP() {}
 
-void calculate1() {}
+void calculateRemainder() {}
 
-void calculate2() {}
+void calculateQuotient() {}
